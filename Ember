@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Ember Saga</title>
+  <meta name="description" content="The Ember Saga — a cinematic fractured journey in three acts." />
+  <style>
+    :root{
+      --bg:#0b0b0e; --text:#f2f2f5; --muted:#a7a7b3;
+      --card:rgba(255,255,255,.06); --border:rgba(255,255,255,.10);
+      --hover:rgba(255,255,255,.10); --radius:16px; --max:920px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(255,255,255,0.07), transparent 60%),
+                  radial-gradient(900px 500px at 90% 20%, rgba(255,255,255,0.05), transparent 55%),
+                  var(--bg);
+      color:var(--text); line-height:1.65;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:56px 20px 72px}
+    .top{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:22px;}
+    .back{
+      display:inline-block; padding:10px 12px; border-radius:999px;
+      border:1px solid var(--border); background:rgba(255,255,255,.04); color:var(--muted);
+    }
+    .back:hover{background:var(--hover); color:var(--text)}
+    h1{font-size:34px; letter-spacing:-.02em; margin:10px 0 6px}
+    .sub{color:var(--muted); margin:0; max-width:75ch}
+    .meta{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    .tag{
+      font-size:12px; color:var(--muted);
+      padding:6px 10px; border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+    }
+    .card{
+      margin-top:18px;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:16px;
+    }
+    h2{font-size:16px; margin:0 0 10px}
+    ul{margin:0; padding-left:18px; color:var(--muted)}
+    li{margin:6px 0}
+    .link{
+      color:var(--text);
+      text-decoration:underline;
+      text-decoration-color:rgba(255,255,255,.25);
+      text-underline-offset:3px;
+    }
+    footer{margin-top:34px; color:var(--muted); font-size:13px}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="top">
+      <a class="back" href="../index.html">← Back to Hub</a>
+      <span class="tag">Project Page</span>
+    </div>
+
+    <h1>The Ember Saga</h1>
+    <p class="sub">
+      A cinematic saga of the fractured self — moving through desert illusion, surveillance city, and ember becoming.
+    </p>
+
+    <div class="meta">
+      <span class="tag">Structure: 3 Acts + 2 Interludes + Epilogue</span>
+      <span class="tag">Arcs: Desert → City → Ember</span>
+      <span class="tag">Theme: Fractured does not mean broken — it means becoming</span>
+    </div>
+
+    <section class="card">
+      <h2>Meaning</h2>
+      <ul>
+        <li><b>Desert Arc:</b> She is alone, broken by illusions.</li>
+        <li><b>City Arc:</b> She is watched, crushed by the system.</li>
+        <li><b>Ember Arc:</b> She burns, becoming her fracture.</li>
+        <li><b>Epilogue:</b> The watchers fall — but her end is left for us to question.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Act I — The Desert Arc</h2>
+      <ul>
+        <li>Crimson Horizon</li>
+        <li>Sand That Whispers</li>
+        <li>Mirage Gate</li>
+        <li>Shadows</li>
+        <li>Parallax Sun</li>
+        <li>Static Signal</li>
+        <li>Glass Bones</li>
+        <li>Becoming the Mirage</li>
+      </ul>
+      <p class="sub" style="margin-top:10px;">Interlude I: <b>Inheritance</b></p>
+    </section>
+
+    <section class="card">
+      <h2>Act II — The City Arc</h2>
+      <ul>
+        <li>The Masked City</li>
+        <li>Carnival of Masks</li>
+        <li>Tower of Mirrors</li>
+        <li>Broken Carnival</li>
+        <li>The Watchers</li>
+        <li>Collapse of Glass</li>
+        <li>Her Last Stand</li>
+        <li>Exit or Entrapment</li>
+      </ul>
+      <p class="sub" style="margin-top:10px;">Interlude II: <b>Remorse</b></p>
+    </section>
+
+    <section class="card">
+      <h2>Act III — The Ember Arc</h2>
+      <ul>
+        <li>Return to the Signal</li>
+        <li>Children of Fracture</li>
+        <li>The Ember</li>
+        <li>Becoming</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Epilogue</h2>
+      <ul>
+        <li><b>System Breach</b> — ERROR SIGNAL flashing as the system collapses. Her fate remains unresolved.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Links</h2>
+      <ul>
+        <li><a class="link" href="../index.html">Back to Hub</a></li>
+        </span><a class="link" href="../assets/Ember_Saga_Codex.pdf">Ember Saga Codex (PDF)</a></li>
+      </ul>
+    </section>
+
+    <footer>© <span id="year"></span></footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
