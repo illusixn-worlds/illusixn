@@ -177,7 +177,7 @@
       <nav class="tabs" aria-label="Primary">
         <button class="tab" data-tab="home" aria-selected="true">Home</button>
         <button class="tab" data-tab="projects" aria-selected="false">Projects</button>
-       <button class="tab" data-tab="books" aria-selected="false">Books</button>
+        <button class="tab" data-tab="books" aria-selected="false">Books</button>
         <button class="tab" data-tab="archive" aria-selected="false">Archive</button>
       </nav>
     </div>
@@ -230,7 +230,6 @@
         </a>
       </div>
 
-      <!-- BOOKS -->
 <button class="tab" data-tab="books" aria-selected="false">Books</button>
 <section id="books" hidden>
   <div class="hero">
@@ -293,11 +292,13 @@
 
     // Tab logic
     const tabs = [...document.querySelectorAll(".tab")];
-   const sections = {
+  const sections = {
   home: document.getElementById("home"),
   projects: document.getElementById("projects"),
   books: document.getElementById("books"),
   archive: document.getElementById("archive"),
+};
+
 };
 
     };
