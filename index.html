@@ -228,6 +228,28 @@
           <p>Viking pagan metal opera — concept sealed, awaiting production.</p>
         </a>
       </div>
+      
+<button class="tab" data-tab="books" aria-selected="false">Books</button>
+<section id="books" hidden>
+  <div class="hero">
+    <h2 class="title">Books</h2>
+    <p class="sub">Stories, novellas, and world bibles. Click to open details and links.</p>
+  </div>
+
+  <div class="grid">
+    <a class="card" href="books/Unsubscribed.html">
+      <h2>Unsubscribed</h2>
+      <p>a dark satire superhero comedy, about reaccuring monthly payed superpowers.</p>
+    </a>
+
+    <a class="card" href="books/Operation Alba.html">
+      <h2>Operation Alba</h2>
+      <p>a Psychological action, about a a world where people's worth are measured by their fame</p>
+    </a>
+
+    <!-- Add more book cards here -->
+  </div>
+</section>
 
 
     <!-- ARCHIVE -->
@@ -269,10 +291,13 @@
 
     // Tab logic
     const tabs = [...document.querySelectorAll(".tab")];
-    const sections = {
-      home: document.getElementById("home"),
-      projects: document.getElementById("projects"),
-      archive: document.getElementById("archive"),
+   const sections = {
+  home: document.getElementById("home"),
+  projects: document.getElementById("projects"),
+  books: document.getElementById("books"),
+  archive: document.getElementById("archive"),
+};
+
     };
 
     function openTab(name, pushState = true) {
