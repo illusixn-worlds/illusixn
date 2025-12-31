@@ -27,16 +27,87 @@
       line-height: 1.6;
     }
     a { color: inherit; text-decoration: none; }
-    .wrap { max-width: var(--max); margin: 0 auto; padding: 56px 20px 72px; }
-    header { margin-bottom: 28px; }
-    .title { font-size: 34px; letter-spacing: -0.02em; margin: 0 0 8px; }
-    .sub { color: var(--muted); margin: 0; max-width: 60ch; }
+
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 42px 20px 72px; }
+
+    /* Top bar */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .brand h1 {
+      font-size: 22px;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+    .brand p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: inline-flex;
+      padding: 6px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .tab {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      padding: 9px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .tab[aria-selected="true"] {
+      color: var(--text);
+      background: rgba(255,255,255,0.10);
+    }
+
+    /* Sections */
+    section[hidden] { display: none !important; }
+
+    .hero {
+      margin: 10px 0 22px;
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.04);
+    }
+    .hero .title {
+      font-size: 34px;
+      letter-spacing: -0.02em;
+      margin: 0 0 8px;
+    }
+    .hero .sub {
+      color: var(--muted);
+      margin: 0;
+      max-width: 70ch;
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 14px;
-      margin-top: 26px;
+      margin-top: 14px;
     }
+
     .card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -45,10 +116,14 @@
       transition: transform .15s ease, background .15s ease, border-color .15s ease;
       min-height: 110px;
     }
-    .card:hover { transform: translateY(-2px); background: var(--hover); border-color: rgba(255,255,255,0.16); }
+    .card:hover {
+      transform: translateY(-2px);
+      background: var(--hover);
+      border-color: rgba(255,255,255,0.16);
+    }
     .card h2 { font-size: 16px; margin: 0 0 6px; }
     .card p { margin: 0; color: var(--muted); font-size: 14px; }
-    footer { margin-top: 36px; color: var(--muted); font-size: 13px; }
+
     .pill {
       display: inline-block;
       padding: 6px 10px;
@@ -56,48 +131,197 @@
       border: 1px solid var(--border);
       background: rgba(255,255,255,0.04);
       font-size: 12px;
+      color: var(--muted);
       margin-top: 14px;
     }
+
+    footer { margin-top: 36px; color: var(--muted); font-size: 13px; }
+
+    /* Simple list style (optional alt layout) */
+    .list {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.04);
+      transition: background .15s ease, border-color .15s ease, transform .15s ease;
+    }
+    .row:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.16);
+      transform: translateY(-1px);
+    }
+    .row .left { display: grid; gap: 2px; }
+    .row .left strong { font-size: 14px; }
+    .row .left span { color: var(--muted); font-size: 13px; }
+    .row .chev { color: var(--muted); font-size: 18px; line-height: 1; }
   </style>
 </head>
+
 <body>
   <main class="wrap">
-    <header>
-      <h1 class="title">Project Hub</h1>
-      <p class="sub">A clean index for my projects, archives, and releases.</p>
-      <div class="pill">Last updated: <span id="date"></span></div>
-    </header>
+    <div class="topbar">
+      <div class="brand">
+        <h1>Project Hub</h1>
+        <p>A clean index for projects, archives, and releases.</p>
+      </div>
 
-  <section class="grid">
-  <a class="card" href="project/anima-fracta.html">
-    <h2>Anima Fracta</h2>
-    <p>Cyberpunk opera — sealed archive, release prep pending.</p>
-  </a>
+      <nav class="tabs" aria-label="Primary">
+        <button class="tab" data-tab="home" aria-selected="true">Home</button>
+        <button class="tab" data-tab="projects" aria-selected="false">Projects</button>
+        <button class="tab" data-tab="archive" aria-selected="false">Archive</button>
+      </nav>
+    </div>
 
-  <a class="card" href="project/stormbreaker-saga.html">
-    <h2>Stormbreaker Saga</h2>
-    <p>Viking pagan metal opera - concept sealed, awaiting production.</p>
-  </a>
+    <!-- HOME -->
+    <section id="home">
+      <div class="hero">
+        <h2 class="title">Main Hub</h2>
+        <p class="sub">
+          Choose a tab. Projects is the full index; Archive is for PDFs and downloads.
+        </p>
+        <div class="pill">Last updated: <span id="date"></span></div>
+      </div>
 
-  <a class="card" href="project/ember-saga.html">
-    <h2>The Ember Saga</h2>
-    <p>Cinematic pop punk × trap × darkwave — sealed codex, awaiting release.</p>
-  </a>
+      <!-- Optional: featured shortcuts -->
+      <div class="grid">
+        <a class="card" href="#" data-open-tab="projects">
+          <h2>Browse Projects</h2>
+          <p>Open the full project index.</p>
+        </a>
+        <a class="card" href="#" data-open-tab="archive">
+          <h2>Open Archive</h2>
+          <p>PDFs, codices, transmissions.</p>
+        </a>
+      </div>
+    </section>
 
-  <a class="card" href="project/archive.html">
-    <h2>Archive</h2>
-    <p>PDFs, transmissions, and consolidated canon notes.</p>
-  </a>
-</section>
+    <!-- PROJECTS -->
+    <section id="projects" hidden>
+      <div class="hero">
+        <h2 class="title">Projects</h2>
+        <p class="sub">Click a project to open its page.</p>
+      </div>
+
+
+      <div class="grid">
+        <a class="card" href="project/ember-saga.html">
+          <h2>The Ember Saga</h2>
+          <p>Cinematic pop punk × trap × darkwave — sealed codex.</p>
+        </a>
+
+        <a class="card" href="project/anima-fracta.html">
+          <h2>Anima Fracta</h2>
+          <p>24-track cyberpunk opera — sealed archive, release prep pending.</p>
+        </a>
+
+        <a class="card" href="project/stormbreaker-saga.html">
+          <h2>Stormbreaker Saga</h2>
+          <p>Viking pagan metal opera — concept sealed, awaiting production.</p>
+        </a>
+      </div>
+
+      <!-- LIST STYLE (optional alternative)
+      <div class="list">
+        <a class="row" href="projects/ember-saga.html">
+          <div class="left">
+            <strong>The Ember Saga</strong>
+            <span>Cinematic — sealed codex</span>
+          </div>
+          <div class="chev">›</div>
+        </a>
+        <a class="row" href="projects/anima-fracta.html">
+          <div class="left">
+            <strong>Anima Fracta</strong>
+            <span>24-track cyberpunk opera — sealed</span>
+          </div>
+          <div class="chev">›</div>
+        </a>
+        <a class="row" href="projects/stormbreaker-saga.html">
+          <div class="left">
+            <strong>Stormbreaker Saga</strong>
+            <span>Viking opera — concept sealed</span>
+          </div>
+          <div class="chev">›</div>
+        </a>
+      </div>
+      -->
+    </section>
+
+    <!-- ARCHIVE -->
+    <section id="archive" hidden>
+      <div class="hero">
+        <h2 class="title">Archive</h2>
+        <p class="sub">PDFs and downloadable artifacts live here.</p>
+      </div>
+
+      <div class="grid">
+        <a class="card" href="assets/Ember_Saga_Codex.pdf">
+          <h2>Ember Saga Codex (PDF)</h2>
+          <p>Definitive corrected archive.</p>
+        </a>
+
+        <!-- Add these later when you upload them -->
+        <a class="card" href="assets/Anima_Fracta_Archive.pdf">
+          <h2>Anima Fracta Archive (PDF)</h2>
+          <p>(Upload to assets/ to enable.)</p>
+        </a>
+
+        <a class="card" href="assets/Stormbreaker_Saga_Archive.pdf">
+          <h2>Stormbreaker Saga Archive (PDF)</h2>
+          <p>(Upload to assets/ to enable.)</p>
+        </a>
+      </div>
+    </section>
+
     <footer>
-      © <span id="2025"></span> • Built on GitHub Pages
+      © <span id="year"></span> • Built on GitHub Pages
     </footer>
   </main>
 
   <script>
-    const d = 2025();
-    document.getElementById("2025").textContent = d.getFullYear();
-    document.getElementById("12.31").textContent = d.toLocaleDateString(undefined, { year: "2025", month: "12", day: "31" });
+    // Dates
+    const d = new Date();
+    document.getElementById("year").textContent = d.getFullYear();
+    document.getElementById("date").textContent = d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "2-digit" });
+
+    // Tab logic
+    const tabs = [...document.querySelectorAll(".tab")];
+    const sections = {
+      home: document.getElementById("home"),
+      projects: document.getElementById("projects"),
+      archive: document.getElementById("archive"),
+    };
+
+    function openTab(name, pushState = true) {
+      for (const [key, el] of Object.entries(sections)) el.hidden = key !== name;
+      for (const t of tabs) t.setAttribute("aria-selected", String(t.dataset.tab === name));
+      if (pushState) history.replaceState(null, "", `#${name}`);
+    }
+
+    tabs.forEach(btn => {
+      btn.addEventListener("click", () => openTab(btn.dataset.tab));
+    });
+
+    // Cards that open a tab
+    document.querySelectorAll("[data-open-tab]").forEach(a => {
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        openTab(a.dataset.openTab);
+      });
+    });
+
+    // Load tab from URL hash
+    const initial = (location.hash || "#home").replace("#", "");
+    openTab(sections[initial] ? initial : "home", false);
   </script>
 </body>
 </html>
