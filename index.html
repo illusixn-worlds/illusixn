@@ -177,7 +177,6 @@
       <nav class="tabs" aria-label="Primary">
         <button class="tab" data-tab="home" aria-selected="true">Home</button>
         <button class="tab" data-tab="projects" aria-selected="false">Projects</button>
-        <button class="tab" data-tab="books" aria-selected="false">Books</button>
         <button class="tab" data-tab="archive" aria-selected="false">Archive</button>
       </nav>
     </div>
@@ -206,7 +205,7 @@
     </section>
 
     <!-- PROJECTS -->
-    <section id="project" hidden>
+    <section id="projects" hidden>
       <div class="hero">
         <h2 class="title">Projects</h2>
         <p class="sub">Click a project to open its page.</p>
@@ -214,24 +213,22 @@
 
 
       <div class="grid">
-        <a class="card" href="project/ember-saga.html">
+        <a class="card" href="projects/ember-saga.html">
           <h2>The Ember Saga</h2>
           <p>Cinematic pop punk × trap × darkwave — sealed codex.</p>
         </a>
 
-        <a class="card" href="project/anima-fracta.html">
+        <a class="card" href="projects/anima-fracta.html">
           <h2>Anima Fracta</h2>
           <p>24-track cyberpunk opera — sealed archive, release prep pending.</p>
         </a>
 
-        <a class="card" href="project/stormbreaker-saga.html">
+        <a class="card" href="projects/stormbreaker-saga.html">
           <h2>Stormbreaker Saga</h2>
           <p>Viking pagan metal opera — concept sealed, awaiting production.</p>
         </a>
       </div>
 
-<button class="tab" data-tab="books" aria-selected="false">Books</button>
-<section id="books" hidden>
   <div class="hero">
     <h2 class="title">Books</h2>
     <p class="sub">Stories, novellas, and world bibles. Click to open details and links.</p>
@@ -283,46 +280,47 @@
     </footer>
   </main>
 
-  <script>
-    // Dates
-    const d = new Date();
-    document.getElementById("year").textContent = d.getFullYear();
-    document.getElementById("date").textContent = d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "2-digit" });
+ <script>
+  // Dates
+  const d = new Date();
+  document.getElementById("year").textContent = d.getFullYear();
+  document.getElementById("date").textContent = d.toLocaleDateString(undefined, {
+    year: "numeric", month: "short", day: "2-digit"
+  });
 
-    // Tab logic
-    const tabs = [...document.querySelectorAll(".tab")];
+  // Tab logic
+  const tabs = [...document.querySelectorAll(".tab")];
   const sections = {
-  home: document.getElementById("home"),
-  projects: document.getElementById("projects"),
-  books: document.getElementById("books"),
-  archive: document.getElementById("archive"),
-};
+    home: document.getElementById("home"),
+    projects: document.getElementById("projects"),
+    books: document.getElementById("books"),
+    archive: document.getElementById("archive"),
+  };
 
-};
-
-    };
-
-    function openTab(name, pushState = true) {
-      for (const [key, el] of Object.entries(sections)) el.hidden = key !== name;
-      for (const t of tabs) t.setAttribute("aria-selected", String(t.dataset.tab === name));
-      if (pushState) history.replaceState(null, "", `#${name}`);
+  function openTab(name, pushState = true) {
+    for (const [key, el] of Object.entries(sections)) {
+      if (!el) continue;
+      el.hidden = key !== name;
     }
+    for (const t of tabs) {
+      t.setAttribute("aria-selected", String(t.dataset.tab === name));
+    }
+    if (pushState) history.replaceState(null, "", `#${name}`);
+  }
 
-    tabs.forEach(btn => {
-      btn.addEventListener("click", () => openTab(btn.dataset.tab));
+  tabs.forEach(btn => {
+    btn.addEventListener("click", () => openTab(btn.dataset.tab));
+  });
+
+  // Cards that open a tab
+  document.querySelectorAll("[data-open-tab]").forEach(a => {
+    a.addEventListener("click", (e) => {
+      e.preventDefault();
+      openTab(a.dataset.openTab);
     });
+  });
 
-    // Cards that open a tab
-    document.querySelectorAll("[data-open-tab]").forEach(a => {
-      a.addEventListener("click", (e) => {
-        e.preventDefault();
-        openTab(a.dataset.openTab);
-      });
-    });
-
-    // Load tab from URL hash
-    const initial = (location.hash || "#home").replace("#", "");
-    openTab(sections[initial] ? initial : "home", false);
-  </script>
-</body>
-</html>
+  // Load tab from URL hash
+  const initial = (location.hash || "#home").replace("#", "");
+  openTab(sections[initial] ? initial : "home", false);
+</script>
