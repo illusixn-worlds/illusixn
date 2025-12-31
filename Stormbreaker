@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Anima Fracta</title>
+  <meta name="description" content="Project page: Anima Fracta" />
+  <style>
+    :root{
+      --bg:#0b0b0e; --text:#f2f2f5; --muted:#a7a7b3;
+      --card:rgba(255,255,255,.06); --border:rgba(255,255,255,.10);
+      --hover:rgba(255,255,255,.10); --radius:16px; --max:920px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(255,255,255,0.07), transparent 60%),
+                  radial-gradient(900px 500px at 90% 20%, rgba(255,255,255,0.05), transparent 55%),
+                  var(--bg);
+      color:var(--text); line-height:1.65;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:56px 20px 72px}
+    .top{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      margin-bottom:22px;
+    }
+    .back{
+      display:inline-block;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      color:var(--muted);
+    }
+    .back:hover{background:var(--hover); color:var(--text)}
+    h1{font-size:34px; letter-spacing:-.02em; margin:10px 0 6px}
+    .sub{color:var(--muted); margin:0; max-width:70ch}
+    .card{
+      margin-top:18px;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:16px;
+    }
+    h2{font-size:16px; margin:0 0 10px}
+    ul{margin:0; padding-left:18px; color:var(--muted)}
+    .meta{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    .tag{
+      font-size:12px; color:var(--muted);
+      padding:6px 10px; border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+    }
+    footer{margin-top:34px; color:var(--muted); font-size:13px}
+    .link{
+      color:var(--text);
+      text-decoration:underline;
+      text-decoration-color:rgba(255,255,255,.25);
+      text-underline-offset:3px;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="top">
+      <a class="back" href="../index.html">← Back to Hub</a>
+      <span class="tag">Project Page</span>
+    </div>
+
+    <h1>StormBreaker Saga</h1>
+    <p class="sub"> Viking pagan metal opera — concept sealed, awaiting production.</p>
+
+    <div class="meta">
+      <span class="tag">Status: Sealed</span>
+      <span class="tag">Format: 22 tracks</span>
+      <span class="tag">Theme: from an oath to a myth</span>
+    </div>
+
+    <section class="card">
+      <h2>Overview</h2>
+      <p class="sub">
+A three-part pagan metal story infused with electronic storms.
+From sea to snow to ash, the storm-marked son defies gods, kin, and curse.
+He dies in exile, yet the goddess descends, walking with him through his past until shame becomes legend.
+Epic, tragic, and transcendent - a modern myth told in storm and aurora.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Key Links</h2>
+      <ul>
+        <li><a class="link" href="../index.html">Hub</a></li>
+        <li><span>(Add PDFs, releases, or embeds here later)</span></li>
+      </ul>
+    </section>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
